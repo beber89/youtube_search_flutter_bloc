@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+  // dummy git change
 
   @override
   Widget build(BuildContext context) {
