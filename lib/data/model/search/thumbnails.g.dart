@@ -70,7 +70,7 @@ class _$Thumbnails extends Thumbnails {
   @override
   final Thumbnail high;
 
-  factory _$Thumbnails([void updates(ThumbnailsBuilder b)]) =>
+  factory _$Thumbnails([void Function(ThumbnailsBuilder) updates]) =>
       (new ThumbnailsBuilder()..update(updates)).build();
 
   _$Thumbnails._({this.default_, this.medium, this.high}) : super._() {
@@ -86,7 +86,7 @@ class _$Thumbnails extends Thumbnails {
   }
 
   @override
-  Thumbnails rebuild(void updates(ThumbnailsBuilder b)) =>
+  Thumbnails rebuild(void Function(ThumbnailsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -153,7 +153,7 @@ class ThumbnailsBuilder implements Builder<Thumbnails, ThumbnailsBuilder> {
   }
 
   @override
-  void update(void updates(ThumbnailsBuilder b)) {
+  void update(void Function(ThumbnailsBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -186,4 +186,4 @@ class ThumbnailsBuilder implements Builder<Thumbnails, ThumbnailsBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
