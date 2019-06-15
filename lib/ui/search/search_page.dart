@@ -6,6 +6,7 @@ import 'package:youtube_search_flutter_bloc/ui/search/search_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube_search_flutter_bloc/ui/search/widget/centered_message.dart';
 import 'package:youtube_search_flutter_bloc/ui/search/widget/search_bar.dart';
+import 'package:youtube_search_flutter_bloc/ui/detail/detail_page.dart';
 
 class SearchPage extends StatefulWidget {
   _SearchPageState createState() => _SearchPageState();
@@ -72,7 +73,7 @@ class _SearchPageState extends State<SearchPage> {
         itemBuilder: (context, index) {
           return index >= state.searchResults.length
               ? _buildLoaderListItem()
-              : _buildVideoListItemCard(state.searchResults[index].snippet);
+              : _buildVideoListItem(state.searchResults[index]);
         },
       ),
     );
@@ -92,6 +93,22 @@ class _SearchPageState extends State<SearchPage> {
       _searchBloc.fetchNextResultPage();
     }
     return false;
+  }
+
+  Widget _buildVideoListItem(SearchItem searchItem) {
+    return GestureDetector(
+      child: _buildVideoListItemCard(searchItem.snippet),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) {
+            return DetailPage(
+              videoId: searchItem.id.videoId,
+            );
+          }),
+        );
+      },
+    );
   }
 
   Widget _buildVideoListItemCard(SearchSnippet videoSnippet) {
